@@ -48,7 +48,7 @@ How often you want to ask SmartThings for the status of the device will depend o
 If you are using the edgebridge server, then this can be left to the default.  The 'custom' option is reserved for more advanced users.
 
 ##### Edge Bridge Address
-The address must be given in the form of \<*IP*>:\<*port*>.  For example 192.168.1.140:8088.  The port number MUST be included.  8088 is the default port used by edgebridge, unless it is changed in the configuration file.
+The address must be given in the form of \<*IP*>:\<*port*>.  For example 192.168.1.140:8088.  The port number MUST be included.  8088 is the default port used by edgebridge, unless it is changed to something else in the edgebridge.cfg file.
 
 ##### Custom Proxy Prefix
 This field is reserved for advanced users with their own custom proxy solution.  It would include the local URL 'prefix' up to, but not including the SmartThings REST API endpoint.  For example:
