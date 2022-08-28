@@ -34,7 +34,7 @@ Here you need to provide the SmartThings device ID for the device you want to mo
 ```
 smartthings devices
 ```
-Or through other ways to send an API command (Postman, curl, etc) (Note that the request will require an authorization header with your Bearer Token)
+Or through other ways to send an API command (Browser, Postman, curl, etc) (Note that the request will require an authorization header with your Bearer Token)
 ```
 GET https://api.smartthings.com/v1/devices
 ```
