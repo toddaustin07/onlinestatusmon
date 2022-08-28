@@ -2,7 +2,7 @@
 A SmartThings Edge device driver to monitor online/offline status of any SmartThings device
 
 ## Pre-requisites
-This driver depends on having some kind of proxy available on your home network so that REST API requests can be sent to SmartThings.  This requirement can be satisfied with my [edgebridge application](https://github.com/toddaustin07/edgebridge).  If you already have edgebridge installed but have not created the optional configuration file, you WILL need to create that configuration file now in order to provide your SmartThings Token.
+This driver depends on having some kind of proxy available on your home network so that REST API requests can be sent to SmartThings from the Edge driver.  This requirement can be satisfied with my [edgebridge application](https://github.com/toddaustin07/edgebridge).  If you already have edgebridge installed but have not created the optional configuration file, you WILL need to create that configuration file now in order to provide your SmartThings Token.
 
 Additional requirements:
 * An 'always-on' computer
