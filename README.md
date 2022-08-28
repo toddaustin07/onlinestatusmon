@@ -1,4 +1,4 @@
-# onlinestatusmon
+# Online Status Monitor Edge Driver
 A SmartThings Edge device driver to monitor online/offline status of any SmartThings device
 
 ## Pre-requisites
