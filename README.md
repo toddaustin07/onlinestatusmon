@@ -49,7 +49,7 @@ If you are using the edgebridge server, then this can be left to the default.  T
 The address must be given in the form of \<*IP*>:\<*port*>.  For example 192.168.1.140:8088.  The port number MUST be included.  8088 is the default port used by edgebridge, unless it is changed in the configuration file.
 
 ##### Custom Proxy Prefix
-This field is reserved for advanced users with their own custom proxy solution.  It would include the complex URL prefix up to, but not including the SmartThings REST API endpoint.  For example:
+This field is reserved for advanced users with their own custom proxy solution.  It would include the local URL 'prefix' up to, but not including the SmartThings REST API endpoint.  For example:
 ```
 http://192.168.1.n:ppppp/proxy/get?url=
 ```
