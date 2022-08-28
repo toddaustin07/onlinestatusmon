@@ -1,0 +1,5 @@
+name: 'Online Status Monitor V1'
+packageKey: 'devstatmonv1'
+permissions:
+    lan: {}
+    discovery: {}

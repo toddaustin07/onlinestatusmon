@@ -1,0 +1,30 @@
+{
+    "id": "partyvoice23922.onlinestatus",
+    "version": 1,
+    "status": "proposed",
+    "name": "onlinestatus",
+    "ephemeral": false,
+    "attributes": {
+        "status": {
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "value": {
+                        "title": "StatusState",
+                        "type": "string",
+                        "enum": [
+                            "online",
+                            "offline"
+                        ]
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "value"
+                ]
+            },
+            "enumCommands": []
+        }
+    },
+    "commands": {}
+}
