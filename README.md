@@ -38,6 +38,8 @@ Or through other ways to send an API command (Browser, Postman, curl, etc) (Note
 ```
 GET https://api.smartthings.com/v1/devices
 ```
+You may be able to simply plug the URL into a browser.  If you are already logged into a SmartThings website in another tab using your SmartThings authentication, request may work without any explicit token header.  Note that in a browser, the device list json can be quite long, so there is probably a link at the bottom of the returned data for additional pages of data.  It is highly recommended to have a json formatter browser pluggin for easier reading.
+
 
 ##### Polling Interval
 How often you want to ask SmartThings for the status of the device will depend on the urgency you need to be notified when it changes status.  There is a practical limit on the number and frequency of requests you can send to SmartThings before you exceed rate limits.  So the polling interval is given in number of **minutes**, with 1 minute as the most frequent allowed, and 10,080 as the least frequent (10,080 minutes == once a week).
