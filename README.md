@@ -21,7 +21,7 @@ SmartThings_Bearer_Token = xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```
 The port number of 8088 is the default port used by edgebridge.  You can change this, but it must match the edgebridge address configured in any of your SmartThings device Settings that use it.
 
-Include your *actual* SmartThings Token.  Be sure the token includes read authorization for locations and devices.
+Include your *actual* SmartThings Token.  Be sure the token was created to include read authorization for locations and devices.
 
 ### Edge Driver
 Enroll your hub in my test channel and select **Online Status Monitor V1** from the list of drivers to be installed.
