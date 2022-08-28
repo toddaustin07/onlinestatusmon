@@ -38,7 +38,7 @@ Or through other ways to send an API command (Browser, Postman, curl, etc) (Note
 ```
 GET https://api.smartthings.com/v1/devices
 ```
-You may be able to simply plug the above URL into a browser.  If you are already logged into a SmartThings website in another tab using your SmartThings authentication, the request may work without any explicit token header.  Note that in a browser, the device list json can be quite long, so there is probably a link at the bottom of the returned data for additional pages of data.  It is **highly** recommended to have a JSON formatter browser extension for easier reading.
+You may be able to simply plug the above URL into a browser.  If you are already logged into a SmartThings website in another tab using your SmartThings authentication, the request may work without any explicit token header.  Note that in a browser, the device list JSON can be quite long, so there is probably a link at the bottom of the returned data for additional pages of data.  It is **highly** recommended to have a JSON formatter browser extension for easier reading.
 
 
 ##### Polling Interval
