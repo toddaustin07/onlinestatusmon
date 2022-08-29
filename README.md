@@ -8,6 +8,7 @@ Additional requirements:
 * An 'always-on' computer
 * SmartThings Hub running Edge
 * [SmartThings Bearer Token](https://account.smartthings.com/tokens)
+* List of SmartThings device IDs (UUID format) of the devices you want to monitor (see below for more info)
 
 ## Installation & Configuration
 ### Edgebridge
