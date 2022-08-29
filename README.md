@@ -25,7 +25,7 @@ The port number of 8088 is the default port used by edgebridge.  You can change 
 Include your *actual* SmartThings Token.  
 
 ##### Creating a SmartThings Token
-If you do not already have a Smartthings token, you can create one [here](https://account.smartthings.com/tokens).  At minmum, include authorization for reading locations and devices.  Once it has been created, be sure to copy and paste your assigned token into a safe place, as well as into the edgebridge.cfg file.
+If you do not already have a Smartthings token, you can create one [here](https://account.smartthings.com/tokens).  At minimum, include authorization for reading locations and devices.  Once it has been created, be sure to copy and paste your assigned token into a safe place, as well as into the edgebridge.cfg file.
 
 Once you have completed your edgebridge.cfg file, you must start (or restart) edgebridge, for example:
 ```
