@@ -27,6 +27,13 @@ Include your *actual* SmartThings Token.
 ##### Creating a SmartThings Token
 If you do not already have a Smartthings token, you can create one [here](https://account.smartthings.com/tokens).  At minmum, include authorization for reading locations and devices.  Once it has been created, be sure to copy and paste your assigned token into a safe place, as well as into the edgebridge.cfg file.
 
+Once you have completed your edgebridge.cfg file, you must start (or restart) edgebridge, for example:
+```
+Any OS with Python:  python3 edgebridge.py
+Windows: edgebridge.exe
+Raspberry Pi:  ./edgebridge4pi
+```
+
 ### Edge Driver
 Enroll your hub in my test channel and select **Online Status Monitor V1g** from the list of drivers to be installed.
 
