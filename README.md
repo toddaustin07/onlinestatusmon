@@ -93,7 +93,3 @@ To create additional devices, use the 'Create additional device' button at the t
 * Is your edgebridge app running and available at the configured address?
 * Is your SmartThings Token correctly configured in edgebridge.cfg?  Stop and restart edgebridge with any config file changes
 * Did you provide the right device ID?  Copy and pasting is the safest way to go.  If manually entered, take care with 'l' vs '1' and 'O' vs. '0', etc.
-* You can test a specific device ID by using a browser:
-  ```
-  https://api.smartthings.com/v1/devices/<deviceID>/health
-  ```
