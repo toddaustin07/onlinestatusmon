@@ -73,7 +73,7 @@ local function issue_request(req_method, req_url, sendbody)
 
   local response = table.concat(responsechunks)
   
-  log.info(string.format("response code=<%s>, status=<%s>", code, status))
+  log.info(string.format("\tresponse code=<%s>, status=<%s>", code, status))
 
   local httpcode_str
   local httpcode_num
@@ -96,8 +96,10 @@ local function issue_request(req_method, req_url, sendbody)
 end
 
 
-local function get_status(device)
+local function get_status(device, index)
 
+  local stdeviceids = device:get_field('stdeviceids')
+  
   local proxy
   
   if device.preferences.proxytype == 'edge' then
@@ -110,7 +112,9 @@ local function get_status(device)
     
   end
   
-  local url = proxy .. 'https://api.smartthings.com/v1/devices/' .. device.preferences.deviceid .. '/health'
+  local url = proxy .. 'https://api.smartthings.com/v1/devices/' .. stdeviceids[index] .. '/health'
+  
+  log.info(string.format("Making API health request for %s...", stdeviceids[index]))
   
   return issue_request("GET", url, nil)
 

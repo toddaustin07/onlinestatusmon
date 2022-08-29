@@ -1,27 +1,129 @@
-name: devstatmon.v1b
+name: devstatmon.v1g
 components:
   - id: main
     capabilities:
-      - id: partyvoice23922.onlinestatus
-        version: 1
       - id: partyvoice23922.createanother
         version: 1
       - id: refresh
         version: 1
     categories:
       - name: Others
+  - id: device1
+    capabilities:
+      - id: partyvoice23922.onlinestatus
+        version: 1
+      - id: refresh
+        version: 1
+  - id: device2
+    capabilities:
+      - id: partyvoice23922.onlinestatus
+        version: 1
+      - id: refresh
+        version: 1
+  - id: device3
+    capabilities:
+      - id: partyvoice23922.onlinestatus
+        version: 1
+      - id: refresh
+        version: 1
+  - id: device4
+    capabilities:
+      - id: partyvoice23922.onlinestatus
+        version: 1
+      - id: refresh
+        version: 1
+  - id: device5
+    capabilities:
+      - id: partyvoice23922.onlinestatus
+        version: 1
+      - id: refresh
+        version: 1
+  - id: device6
+    capabilities:
+      - id: partyvoice23922.onlinestatus
+        version: 1
+      - id: refresh
+        version: 1
+  - id: device7
+    capabilities:
+      - id: partyvoice23922.onlinestatus
+        version: 1
+      - id: refresh
+        version: 1
+  - id: device8
+    capabilities:
+      - id: partyvoice23922.onlinestatus
+        version: 1
+      - id: refresh
+        version: 1
+  - id: device9
+    capabilities:
+      - id: partyvoice23922.onlinestatus
+        version: 1
+      - id: refresh
+        version: 1
+  - id: device10
+    capabilities:
+      - id: partyvoice23922.onlinestatus
+        version: 1
+      - id: refresh
+        version: 1
+  - id: device11
+    capabilities:
+      - id: partyvoice23922.onlinestatus
+        version: 1
+      - id: refresh
+        version: 1
+  - id: device12
+    capabilities:
+      - id: partyvoice23922.onlinestatus
+        version: 1
+      - id: refresh
+        version: 1
+  - id: device13
+    capabilities:
+      - id: partyvoice23922.onlinestatus
+        version: 1
+      - id: refresh
+        version: 1
+  - id: device14
+    capabilities:
+      - id: partyvoice23922.onlinestatus
+        version: 1
+      - id: refresh
+        version: 1
+  - id: device15
+    capabilities:
+      - id: partyvoice23922.onlinestatus
+        version: 1
+      - id: refresh
+        version: 1
+  - id: device16
+    capabilities:
+      - id: partyvoice23922.onlinestatus
+        version: 1
+      - id: refresh
+        version: 1
+  - id: device17
+    capabilities:
+      - id: partyvoice23922.onlinestatus
+        version: 1
+      - id: refresh
+        version: 1
+  - id: device18
+    capabilities:
+      - id: partyvoice23922.onlinestatus
+        version: 1
+      - id: refresh
+        version: 1
+  - id: device19
+    capabilities:
+      - id: partyvoice23922.onlinestatus
+        version: 1
+      - id: refresh
+        version: 1
 preferences:
-  - title: "SmartThings Device ID"
-    name: deviceid
-    description: "Enter the hexidecimal UUID"
-    required: true
-    preferenceType: string
-    definition:
-      stringType: text
-      minLength: 36
-      maxLength: 36
-      default: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-  - title: "Polling Interval"
+  - title: "Polling Interval (minutes)"
     name: interval
     description: "Number of minutes"
     required: true
@@ -59,3 +161,193 @@ preferences:
       stringType: text
       minLength: 18
       default: "http://192.168.1.n:ppppp/proxy/get?url="
+  - title: "SmartThings DeviceID #1"
+    name: deviceid1
+    description: "Enter the hexidecimal UUID"
+    required: true
+    preferenceType: string
+    definition:
+      stringType: text
+      minLength: 36
+      maxLength: 36
+      default: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+  - title: "SmartThings DeviceID #2"
+    name: deviceid2
+    description: "Enter the hexidecimal UUID"
+    required: true
+    preferenceType: string
+    definition:
+      stringType: text
+      minLength: 36
+      maxLength: 36
+      default: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+  - title: "SmartThings DeviceID #3"
+    name: deviceid3
+    description: "Enter the hexidecimal UUID"
+    required: true
+    preferenceType: string
+    definition:
+      stringType: text
+      minLength: 36
+      maxLength: 36
+      default: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+  - title: "SmartThings DeviceID #4"
+    name: deviceid4
+    description: "Enter the hexidecimal UUID"
+    required: true
+    preferenceType: string
+    definition:
+      stringType: text
+      minLength: 36
+      maxLength: 36
+      default: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+  - title: "SmartThings DeviceID #5"
+    name: deviceid5
+    description: "Enter the hexidecimal UUID"
+    required: true
+    preferenceType: string
+    definition:
+      stringType: text
+      minLength: 36
+      maxLength: 36
+      default: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+  - title: "SmartThings DeviceID #6"
+    name: deviceid6
+    description: "Enter the hexidecimal UUID"
+    required: true
+    preferenceType: string
+    definition:
+      stringType: text
+      minLength: 36
+      maxLength: 36
+      default: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+  - title: "SmartThings DeviceID #7"
+    name: deviceid7
+    description: "Enter the hexidecimal UUID"
+    required: true
+    preferenceType: string
+    definition:
+      stringType: text
+      minLength: 36
+      maxLength: 36
+      default: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+  - title: "SmartThings DeviceID #8"
+    name: deviceid8
+    description: "Enter the hexidecimal UUID"
+    required: true
+    preferenceType: string
+    definition:
+      stringType: text
+      minLength: 36
+      maxLength: 36
+      default: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+  - title: "SmartThings DeviceID #9"
+    name: deviceid9
+    description: "Enter the hexidecimal UUID"
+    required: true
+    preferenceType: string
+    definition:
+      stringType: text
+      minLength: 36
+      maxLength: 36
+      default: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+  - title: "SmartThings DeviceID #10"
+    name: deviceid10
+    description: "Enter the hexidecimal UUID"
+    required: true
+    preferenceType: string
+    definition:
+      stringType: text
+      minLength: 36
+      maxLength: 36
+      default: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+  - title: "SmartThings DeviceID #11"
+    name: deviceid11
+    description: "Enter the hexidecimal UUID"
+    required: true
+    preferenceType: string
+    definition:
+      stringType: text
+      minLength: 36
+      maxLength: 36
+      default: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+  - title: "SmartThings DeviceID #12"
+    name: deviceid12
+    description: "Enter the hexidecimal UUID"
+    required: true
+    preferenceType: string
+    definition:
+      stringType: text
+      minLength: 36
+      maxLength: 36
+      default: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+  - title: "SmartThings DeviceID #13"
+    name: deviceid13
+    description: "Enter the hexidecimal UUID"
+    required: true
+    preferenceType: string
+    definition:
+      stringType: text
+      minLength: 36
+      maxLength: 36
+      default: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+  - title: "SmartThings DeviceID #14"
+    name: deviceid14
+    description: "Enter the hexidecimal UUID"
+    required: true
+    preferenceType: string
+    definition:
+      stringType: text
+      minLength: 36
+      maxLength: 36
+      default: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+  - title: "SmartThings DeviceID #15"
+    name: deviceid15
+    description: "Enter the hexidecimal UUID"
+    required: true
+    preferenceType: string
+    definition:
+      stringType: text
+      minLength: 36
+      maxLength: 36
+      default: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+  - title: "SmartThings DeviceID #16"
+    name: deviceid16
+    description: "Enter the hexidecimal UUID"
+    required: true
+    preferenceType: string
+    definition:
+      stringType: text
+      minLength: 36
+      maxLength: 36
+      default: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+  - title: "SmartThings DeviceID #17"
+    name: deviceid17
+    description: "Enter the hexidecimal UUID"
+    required: true
+    preferenceType: string
+    definition:
+      stringType: text
+      minLength: 36
+      maxLength: 36
+      default: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+  - title: "SmartThings DeviceID #18"
+    name: deviceid18
+    description: "Enter the hexidecimal UUID"
+    required: true
+    preferenceType: string
+    definition:
+      stringType: text
+      minLength: 36
+      maxLength: 36
+      default: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+  - title: "SmartThings DeviceID #19"
+    name: deviceid19
+    description: "Enter the hexidecimal UUID"
+    required: true
+    preferenceType: string
+    definition:
+      stringType: text
+      minLength: 36
+      maxLength: 36
+      default: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"

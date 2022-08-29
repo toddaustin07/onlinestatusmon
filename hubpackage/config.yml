@@ -1,5 +1,5 @@
-name: 'Online Status Monitor V1'
-packageKey: 'devstatmonv1'
+name: 'Online Status Monitor V1g'
+packageKey: 'devstatmonv1g'
 permissions:
     lan: {}
     discovery: {}

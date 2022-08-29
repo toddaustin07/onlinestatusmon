@@ -37,6 +37,10 @@ local cap_createdev = capabilities["partyvoice23922.createanother"]
 -- Module variables
 local thisDriver = {}
 local initialized = false
+local MAXDEVFIELDS = 19
+
+
+math.randomseed(socket.gettime())
 
 
 local function validate_address(lanAddress)
@@ -87,10 +91,31 @@ local function validate_bridge(device)
 
   if validate_address(device.preferences.bridgeaddr) then
     device:set_field('validbridge', true)
+    return true
   else
     device:set_field('validbridge', false)
+    return false
   end
 
+end
+
+local function validate_uuid(uuid)
+
+  if uuid then
+    local chunks = {uuid:match("^(%x+)%-(%x+)%-(%x+)%-(%x+)-(%x+)$")}
+    
+    if #chunks == 5 then
+      if string.len(chunks[1]) ~= 8 then; return nil; end
+      if string.len(chunks[2]) ~= 4 then; return nil; end
+      if string.len(chunks[3]) ~= 4 then; return nil; end
+      if string.len(chunks[4]) ~= 4 then; return nil; end
+      if string.len(chunks[5]) ~= 12 then; return nil; end
+      return uuid
+    end
+  end
+  
+  return nil
+      
 end
 
 local function create_device(driver)
@@ -99,7 +124,7 @@ local function create_device(driver)
   local MODEL = 'devstatmon'
   local VEND_LABEL = 'Online Status Monitor'
   local ID = 'devstatmon_' .. socket.gettime()
-  local PROFILE = 'devstatmon.v1b'
+  local PROFILE = 'devstatmon.v1g'
 
   log.info (string.format('Creating new device: label=<%s>, id=<%s>', VEND_LABEL, ID))
 
@@ -118,11 +143,11 @@ local function create_device(driver)
 end
 
 
-local function do_poll(device)
+local function do_poll(device, index)
 
   if device:get_field('validbridge') == true then
   
-    local response = comms.get_status(device)
+    local response = comms.get_status(device, index)
     
     if response then
     
@@ -132,9 +157,9 @@ local function do_poll(device)
         return nil
       end
       
-      log.debug (string.format('Returned state=%s for device %s', jsondata.state, device.label))
+      log.debug (string.format('Returned state=%s for device #%s', jsondata.state, index))
 
-      device:emit_event(cap_status.status(string.lower(jsondata.state)))
+      device:emit_component_event(device.profile.components['device'..tostring(index)], cap_status.status(string.lower(jsondata.state)))
     
     end
   
@@ -143,29 +168,64 @@ local function do_poll(device)
 end
 
 
-local function stop_polling(device)
+local function stop_polling(device, index)
 
-  local polltimer = device:get_field('polltimer')
-  if polltimer then
-    thisDriver:cancel_timer(polltimer)
-  end
+  local polltimer = device:get_field('polltimer'..tostring(index))
+    
+  if polltimer then; thisDriver:cancel_timer(polltimer); end
 
 end
 
+local function stop_polling_all(device)
 
-local function start_polling(device)
+  for i, deviceid in ipairs(device:get_field('stdeviceids')) do
+    if deviceid then; stop_polling(device, i); end
+  end
+end
 
-  stop_polling(device)
+
+local function start_polling(device, index)
+
+  stop_polling(device, index)
 
   local polltimer = device.thread:call_on_schedule(device.preferences.interval*60, 
                                                     function()
-                                                      do_poll(device)
+                                                      do_poll(device, index)
                                                     end )
           
-  device:set_field('polltimer', polltimer)
+  device:set_field('polltimer'..tostring(index), polltimer)
 
 end
 
+
+local function start_polling_all(device)
+
+  if device:get_field('validbridge') == true then
+  
+    for i, deviceid in ipairs(device:get_field('stdeviceids')) do
+      
+      if deviceid then
+        log.debug ('Starting polling for deviceID:', deviceid)
+
+        -- randomly stagger the actual start time of each
+        device.thread:call_with_delay(5 + math.floor(math.random() * 30 + .5), 
+            function()
+              start_polling(device, i)
+            end
+        )
+      end
+    end
+  end
+end
+
+
+local function update_all(device)
+
+  for i, deviceid in ipairs(device:get_field('stdeviceids')) do
+    if deviceid then; device.thread:queue_event(do_poll, device, i); end
+  end
+
+end
 
 -----------------------------------------------------------------------
 --										COMMAND HANDLERS
@@ -175,7 +235,7 @@ local function handle_stockrefresh(driver, device, command)
 
   log.info ('Stock refresh requested; command:', command.command)
 
-  do_poll(device)
+  update_all(device)
   
 end
 
@@ -195,15 +255,34 @@ end
 -- Lifecycle handler to initialize existing devices AND newly discovered devices
 local function device_init(driver, device)
   
-    log.debug(device.id .. ": " .. device.device_network_id .. "> INITIALIZING")
+  log.debug(device.id .. ": " .. device.device_network_id .. "> INITIALIZING")
+
+  local stdeviceids = {}
+
+  for key, value in pairs(device.preferences) do
+    local pnum = tonumber(key:match('deviceid(%d+)'))
+    if pnum then
+      if value then
+        if validate_uuid(value) then
+          log.debug (string.format('Device %s: DeviceID #%d initialized to %s', device.label, pnum, value))
+          stdeviceids[pnum] = value
+        else
+          stdeviceids[pnum] = false
+        end
+      end
+    end
+  end
   
-    validate_bridge(device)
-    
-    start_polling(device)
+  device:set_field('stdeviceids', stdeviceids)
   
-    initialized = true
-    
-    log.debug('Exiting device initialization')
+  if validate_bridge(device) then
+    update_all(device)
+    start_polling_all(device)
+  end
+
+  initialized = true
+  
+  log.debug('Exiting device initialization')
 end
 
 
@@ -212,7 +291,9 @@ local function device_added (driver, device)
 
   log.info(device.id .. ": " .. device.device_network_id .. "> ADDED")
   
-  device:emit_event(cap_status.status('offline'))
+  for i=1, MAXDEVFIELDS do
+    device:emit_component_event(device.profile.components['device'..tostring(i)], cap_status.status('offline'))
+  end
   
 end
 
@@ -230,7 +311,7 @@ local function device_removed(driver, device)
   
   log.warn(device.id .. ": " .. device.device_network_id .. "> removed")
 
-  stop_polling(device)
+  stop_polling_all(device)
 
   local device_list = driver:get_devices()
   if #device_list == 0 then
@@ -253,7 +334,7 @@ local function shutdown_handler(driver, event)
   log.warn('Driver shutdown')
   local device_list = driver:get_devices()
   for _, device in ipairs(device_list) do
-    stop_polling(device)
+    stop_polling_all(device)
   end
   log.info('\tAll polling terminated')
 end
@@ -271,8 +352,34 @@ local function handler_infochanged (driver, device, event, args)
       validate_bridge(device)
       
     elseif args.old_st_store.preferences.interval ~= device.preferences.interval then
-      log.info ('Polling Interval changed to: ', device.preferences.interval, type(device.preferences.interval))
-      start_polling(device)
+      log.info ('Polling Interval changed to: ', device.preferences.interval)
+      start_polling_all(device)
+      
+    else
+      local stdeviceids = device:get_field('stdeviceids')
+    
+      for key, value in pairs(device.preferences) do
+    
+        local index = tonumber(key:match('deviceid(%d+)'))
+        
+        if index then 
+        
+          if args.old_st_store.preferences[key] ~= device.preferences[key] then
+            log.info (string.format('DeviceID #%d changed to: %s', index, value))
+            if validate_uuid(value) then
+              stdeviceids[index] = value
+              device:set_field('stdeviceids', stdeviceids)
+              do_poll(device, index)
+              start_polling(device, index)
+            else
+              log.warn ('\tInvalid UUID')
+              stdeviceids[index] = false
+              device:set_field('stdeviceids', stdeviceids)
+              stop_polling(device, index)
+            end
+          end
+        end
+      end
     end
   end
 end
@@ -316,7 +423,7 @@ thisDriver = Driver("thisDriver", {
   }
 })
 
-log.info ('Online Device Status Monitor v0.1 Started')
+log.info ('Online Device Status Monitor v0.1g Started')
 
 
 thisDriver:run()
