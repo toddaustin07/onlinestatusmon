@@ -62,7 +62,7 @@ This field is reserved for advanced users with their own custom proxy solution. 
 http://192.168.1.n:ppppp/proxy/get?url=
 ```
 ##### SmartThings DeviceIDs (#1-19)
-Here you need to provide the SmartThings device IDs for each the devices you want to monitor.  The device ID can be obtained in a few ways:
+Here you need to provide the SmartThings device IDs for each of the devices you want to monitor.  Device IDs can be obtained in a few ways:
 * Option 1: Use a web browser, curl or Postman
   * Depending on what you use, the request may require a way to include an authorization header with your SmartThings Token
   * A browser can be the easiest, but it is **highly** recommended to have a JSON formatter browser extension for easier reading of the response data.
@@ -79,6 +79,8 @@ Here you need to provide the SmartThings device IDs for each the devices you wan
 You can provide as few or as many device IDs as you would like (up to 19) and configure them in any available 'slot'.
 
 Device IDs must be provided in the standard UUID hexidecimal format (36 characters): xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.  Any values not conforming to this standard will be ignored.
+
+Note that the Device IDs required are *not* available from the IDE (soon to be sunset).
 
 ## Usage
 Once a valid edgebridge address and at least one device ID is configured, polling will begin at the desired interval.  The status obtained is shown in the respective device section on the Controls screen as either "online" or "offline".  These values are available to automations as well.
