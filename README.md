@@ -66,7 +66,7 @@ Here you need to provide the SmartThings device IDs for each the devices you wan
   * A browser can be the easiest, but it is **highly** recommended to have a JSON formatter browser extension for easier reading of the response data.
   * If you sign in to a SmartThings website in another tab of your browser, you may be able to simply type the URL below in another tab:
     ```
-    (GET) https://api.smartthings.com/v1/devices
+    https://api.smartthings.com/v1/devices
     ```
     
 * Option 2: Use SmartThings CLI:
