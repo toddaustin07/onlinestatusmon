@@ -48,6 +48,8 @@ Before you continue you will need to understand that this new device you just cr
 ##### Polling Interval
 How often you want to ask SmartThings for the status of the device IDs configured will depend on the urgency you need to be notified when it changes status.  There is a practical limit on the number and frequency of requests you can send to SmartThings before you exceed rate limits.  So the polling interval is given in number of **minutes**, with 1 minute as the most frequent allowed, and 10,080 as the least frequent (10,080 minutes == once a week).
 
+Note that this value can be changed at any time and will take effect immediately.
+
 ##### Proxy Type
 If you are using the edgebridge server, then this can be left to the default.  The 'custom' option is reserved for more advanced users.
 
@@ -76,9 +78,22 @@ Here you need to provide the SmartThings device IDs for each the devices you wan
 
 You can provide as few or as many device IDs as you would like (up to 19) and configure them in any available 'slot'.
 
+Device IDs must be provided in the standard UUID hexidecimal format (36 characters): xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.  Any values not conforming to this standard will be ignored.
+
 ## Usage
-Once the device Settings are configured, polling will begin at the desired interval.  The status obtained is shown in the respective device section on the Controls screen as either "online" or "offline".  These values are available to automations as well.
+Once a valid edgebridge address and at least one device ID is configured, polling will begin at the desired interval.  The status obtained is shown in the respective device section on the Controls screen as either "online" or "offline".  These values are available to automations as well.
 
 To force a refresh immediately, perform a swipe down motion on the Controls screen (standard 'refresh' gesture).  SmartThings will be immediately queried and the status values updated.
 
 To create additional devices, use the 'Create additional device' button at the top of the Controls screen.  Each individual device will need to be configured as above, with its own list of devices and a unique polling interval.  In fact this may be one way you may want to group your devices, with some having a polling interval more or less frequent than others.
+
+
+## Not Working
+* Is your edgebridge address configured correctly?
+* Is your edgebridge app running and available at the configured address?
+* Is your SmartThings Token correctly configured in edgebridge.cfg?  Stop and restart edgebridge with any config file changes
+* Did you provide the right device ID?  Copy and pasting is the safest way to go.  If manually entered, take care with 'l' vs '1' and 'O' vs. '0', etc.
+* You can test a specific device ID by using a browser:
+  ```
+  https://api.smartthings.com/v1/devices/<deviceID>/health
+  ```
