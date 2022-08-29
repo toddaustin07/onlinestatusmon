@@ -64,7 +64,7 @@ Here you need to provide the SmartThings device IDs for each the devices you wan
 * Option 1: Use a web browser, curl or Postman
   * Depending on what you use, the request may require a way to include an authorization header with your SmartThings Token
   * A browser can be the easiest, but it is **highly** recommended to have a JSON formatter browser extension for easier reading of the response data.
-  * If you sign in to a SmartThings website in another tab of your browser, you may be able to simply type the URL below
+  * If you sign in to a SmartThings website in another tab of your browser, you may be able to simply type the URL below in another tab:
     ```
     (GET) https://api.smartthings.com/v1/devices
     ```
