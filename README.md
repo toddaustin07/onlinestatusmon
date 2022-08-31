@@ -94,4 +94,6 @@ To create additional devices, use the 'Create additional device' button at the t
 * Is your edgebridge address configured correctly?
 * Is your edgebridge app running and available at the configured address?
 * Is your SmartThings Token correctly configured in edgebridge.cfg?  Stop and restart edgebridge with any config file changes
-* Did you provide the right device ID?  Copy and pasting is the safest way to go.  If manually entered, take care with 'l' vs '1' and 'O' vs. '0', etc.
+* Did you provide the right device ID?  Copy and pasting is the safest way to go; it must be exactly 36 characters or will be ignored
+  * If manually entered, take care with 'l' vs '1' and 'O' vs. '0', etc.
+  * Ensure there are no extraneous leading or trailing spaces
