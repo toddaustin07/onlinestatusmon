@@ -27,7 +27,9 @@ Include your *actual* SmartThings Token.
 ##### Creating a SmartThings Token
 If you do not already have a Smartthings token, you can create one [here](https://account.smartthings.com/tokens).  At minimum, include authorization for reading locations and devices.  Once it has been created, be sure to copy and paste your assigned token into a safe place, as well as into the edgebridge.cfg file.
 
-Once you have completed your edgebridge.cfg file, you must start (or restart) edgebridge, for example:
+Be sure your edgebridge.cfg is in the same current working directory as your edgebridge app.
+
+Once you have completed and saved your edgebridge.cfg file, you must start (or restart) edgebridge, for example:
 ```
 Any OS with Python:  python3 edgebridge.py
 Windows: edgebridge.exe
