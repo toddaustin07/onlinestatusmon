@@ -93,7 +93,7 @@ Device IDs must be provided in the standard UUID hexidecimal format (36 characte
 
 ##### Short Device Name (#1-19)
 
-In addition to the device ID itself, you can optionally provide a short (20 alphanumeric characters, no spaces, so special characters) name for the device that will be shown on the Controls screen to aid in remembering which device is which.  Note that this name will *not* appear in the Automations screen.
+In addition to the device ID itself, you can optionally provide a short (up to 20 alphanumeric characters, no spaces, so special characters) name for the device that will be shown on the Controls screen to aid in remembering which device is which.  Note that this name will *not* appear in the Automations screen.
 
 
 ## Usage
