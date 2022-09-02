@@ -12,7 +12,7 @@ Additional requirements:
 
 ## Installation & Configuration
 ### Edgebridge
-Go to my github repository and follow the instructions to download and configure the application 
+Go to my github repository and follow the instructions to download and configure the edgebridge application.
 #### Edgebridge configuration file
 The edgebridge github README indicates the configuration file is optional, but for this driver it is mandatory because it must contain your SmartThings Token.  Create a file called edgebridge.cfg in the same directory as your edgebridge application file and edit it to look like this:
 ```
