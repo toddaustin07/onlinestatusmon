@@ -75,12 +75,17 @@ Here you need to provide the SmartThings device IDs for each of the devices you 
   ```
   smartthings devices
   ```
+  
+*Note that the Device IDs required for this driver are **not** available from the IDE (soon to be sunset)*
 
 You can provide as few or as many device IDs as you would like (up to 19) and configure them in any available 'slot'.
 
 Device IDs must be provided in the standard UUID hexidecimal format (36 characters): xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.  Any values not conforming to this standard will be ignored.
 
-Note that the Device IDs required are *not* available from the IDE (soon to be sunset).
+##### Short Device Name
+
+In addition to the device ID itself, you can optionally provide a short (20 alphanumeric characters, no spaces, so special characters) name for the device that will be shown on the Controls screen to aid in remembering which device is which.  Note that this name will *not* appear in the Automations screen.
+
 
 ## Usage
 Once a valid edgebridge address and at least one device ID is configured, polling will begin at the desired interval.  The status obtained is shown in the respective device section on the Controls screen as either "online" or "offline".  These values are available to automations as well.
