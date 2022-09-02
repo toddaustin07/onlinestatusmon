@@ -82,7 +82,7 @@ You can provide as few or as many device IDs as you would like (up to 19) and co
 
 Device IDs must be provided in the standard UUID hexidecimal format (36 characters): xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.  Any values not conforming to this standard will be ignored.
 
-##### Short Device Name
+##### Short Device Name (#1-19)
 
 In addition to the device ID itself, you can optionally provide a short (20 alphanumeric characters, no spaces, so special characters) name for the device that will be shown on the Controls screen to aid in remembering which device is which.  Note that this name will *not* appear in the Automations screen.
 
