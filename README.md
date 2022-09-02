@@ -8,7 +8,25 @@ Additional requirements:
 * An 'always-on' computer
 * SmartThings Hub running Edge
 * [SmartThings Bearer Token](https://account.smartthings.com/tokens)
-* List of SmartThings device IDs (UUID format) of the devices you want to monitor (see below for more info)
+* List of **SmartThings device IDs** (UUID format) of the devices you want to monitor (see below for more info)
+
+### Finding the SmartThings device ID
+
+Device IDs can be obtained in a few ways:
+* Option 1: Use a web browser, curl or Postman
+  * Depending on what you use, the request may require a way to include an authorization header with your SmartThings Token
+  * A browser can be the easiest, but it is **highly** recommended to have a JSON formatter browser extension for easier reading of the response data.
+  * If you sign in to your SmartThings account in another tab of your browser, you may be able to simply type the URL below in another tab and have your authorization be recognized:
+    ```
+    https://api.smartthings.com/v1/devices
+    ```
+    If you get a 401 error, you need to get signed in to your SmartThings account on another tab.
+* Option 2: Use SmartThings CLI:
+  ```
+  smartthings devices
+  ```
+  
+*Note that the Device IDs required for this driver are **not** available from the IDE (soon to be sunset)*
 
 ## Installation & Configuration
 ### Edgebridge
@@ -64,21 +82,7 @@ This field is reserved for advanced users with their own custom proxy solution. 
 http://192.168.1.n:ppppp/proxy/get?url=
 ```
 ##### SmartThings DeviceIDs (#1-19)
-Here you need to provide the SmartThings device IDs for each of the devices you want to monitor.  Device IDs can be obtained in a few ways:
-* Option 1: Use a web browser, curl or Postman
-  * Depending on what you use, the request may require a way to include an authorization header with your SmartThings Token
-  * A browser can be the easiest, but it is **highly** recommended to have a JSON formatter browser extension for easier reading of the response data.
-  * If you sign in to a SmartThings website in another tab of your browser, you may be able to simply type the URL below in another tab:
-    ```
-    https://api.smartthings.com/v1/devices
-    ```
-    
-* Option 2: Use SmartThings CLI:
-  ```
-  smartthings devices
-  ```
-  
-*Note that the Device IDs required for this driver are **not** available from the IDE (soon to be sunset)*
+Here you need to provide the SmartThings device IDs for each of the devices you want to monitor.  
 
 You can provide as few or as many device IDs as you would like (up to 19) and configure them in any available 'slot'.
 
