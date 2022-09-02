@@ -26,6 +26,8 @@ Device IDs can be obtained in a few ways:
   smartthings devices
   ```
   
+A device ID is a 36-character hexidecimal string in the standard UUID format:  xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+  
 *Note that the Device IDs required for this driver are **not** available from the IDE (soon to be sunset)*
 
 ## Installation & Configuration
