@@ -83,6 +83,7 @@ This field is reserved for advanced users with their own custom proxy solution. 
 ```
 http://192.168.1.n:ppppp/proxy/get?url=
 ```
+*Note that it is the custom proxy's responsibility to include an https Authorization header with your SmartThings token.*
 ##### SmartThings DeviceIDs (#1-19)
 Here you need to provide the SmartThings device IDs for each of the devices you want to monitor.  
 
