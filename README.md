@@ -88,7 +88,7 @@ In addition to the device ID itself, you can optionally provide a short (20 alph
 
 
 ## Usage
-Once a valid edgebridge address and at least one device ID is configured, polling will begin at the desired interval.  The status obtained is shown in the respective device section on the Controls screen as either "online" or "offline".  These values are available to automations as well.
+Once a valid edgebridge address and at least one device ID is configured, polling will begin at the desired interval.  The status obtained is shown in the respective device section on the Controls screen as either "online" or "offline".  This status may also be prefixed by the short device name if provided in device Settings.  The online/offline device status is available to automations as well.
 
 To force a refresh immediately, perform a swipe down motion on the Controls screen (standard 'refresh' gesture).  SmartThings will be immediately queried and the status values updated.
 
