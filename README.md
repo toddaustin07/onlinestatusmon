@@ -35,7 +35,7 @@ Raspberry Pi:  ./edgebridge4pi
 ```
 
 ### Edge Driver
-Enroll your hub in my test channel and select **Online Status Monitor V1g** from the list of drivers to be installed.
+Enroll your hub in my [shared projects](https://bestow-regional.api.smartthings.com/invite/d429RZv8m9lo) channel and select **Online Status Monitor V1g** from the list of drivers to be installed.
 
 Once the driver is available on your hub, the next time you perform an *Add device / Scan for nearby devices* in the mobile app, you will get a device created in your *No Room Assigned* room called "Online Status Monitor".  Open this monitoring device to the Controls screen and tap the 3 vertical dot menu in the upper right and then select **Settings**.
 
