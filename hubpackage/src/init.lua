@@ -32,6 +32,7 @@ local comms = require "comms"
 
 -- Custom Capabiities
 local cap_status = capabilities["partyvoice23922.onlinestatus"]
+local cap_statlabel = capabilities["partyvoice23922.onlinestatlabel"]
 local cap_createdev = capabilities["partyvoice23922.createanother"]
 
 -- Module variables
@@ -41,6 +42,23 @@ local MAXDEVFIELDS = 19
 
 
 math.randomseed(socket.gettime())
+
+
+local function disptable(table, tab, maxlevels, currlevel)
+
+	if not currlevel then; currlevel = 0; end
+  currlevel = currlevel + 1
+  for key, value in pairs(table) do
+    if type(key) ~= 'table' then
+      log.debug (tab .. '  ' .. key, value)
+    else
+      log.debug (tab .. '  ', key, value)
+    end
+    if (type(value) == 'table') and (currlevel < maxlevels) then
+      disptable(value, '  ' .. tab, maxlevels, currlevel)
+    end
+  end
+end
 
 
 local function validate_address(lanAddress)
@@ -124,7 +142,7 @@ local function create_device(driver)
   local MODEL = 'devstatmon'
   local VEND_LABEL = 'Online Status Monitor'
   local ID = 'devstatmon_' .. socket.gettime()
-  local PROFILE = 'devstatmon.v1g'
+  local PROFILE = 'devstatmon.v2g'
 
   log.info (string.format('Creating new device: label=<%s>, id=<%s>', VEND_LABEL, ID))
 
@@ -159,12 +177,20 @@ local function do_poll(device, index)
       
       log.debug (string.format('Returned state=%s for device #%s', jsondata.state, index))
 
-      device:emit_component_event(device.profile.components['device'..tostring(index)], cap_status.status(string.lower(jsondata.state)))
-    
+      local state = string.lower(jsondata.state)
+      
+      device:emit_component_event(device.profile.components['device'..tostring(index)], cap_status.status(state))
+      
+      local namepref = device.preferences['name'..tostring(index)]
+      
+      local label = state
+      if namepref and namepref ~= null and namepref ~= 'null' then
+        log.debug (string.format('name=[%s]', device.preferences['name'..tostring(index)]))
+        label = device.preferences['name'..tostring(index)] .. ': ' .. state
+      end
+      device:emit_component_event(device.profile.components['device'..tostring(index)], cap_statlabel.statuslabel(label))
     end
-  
   end
-
 end
 
 
@@ -257,6 +283,8 @@ local function device_init(driver, device)
   
   log.debug(device.id .. ": " .. device.device_network_id .. "> INITIALIZING")
 
+  device:try_update_metadata({profile='devstatmon.v2g'})
+
   local stdeviceids = {}
 
   for key, value in pairs(device.preferences) do
@@ -293,6 +321,7 @@ local function device_added (driver, device)
   
   for i=1, MAXDEVFIELDS do
     device:emit_component_event(device.profile.components['device'..tostring(i)], cap_status.status('offline'))
+    device:emit_component_event(device.profile.components['device'..tostring(i)], cap_statlabel.statuslabel('offline'))
   end
   
 end
@@ -423,7 +452,7 @@ thisDriver = Driver("thisDriver", {
   }
 })
 
-log.info ('Online Device Status Monitor v0.1g Started')
+log.info ('Online Device Status Monitor v0.2g Started')
 
 
 thisDriver:run()

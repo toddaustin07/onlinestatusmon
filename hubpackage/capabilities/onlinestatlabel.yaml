@@ -1,0 +1,18 @@
+id: partyvoice23922.onlinestatlabel
+version: 1
+status: proposed
+name: onlinestatlabel
+ephemeral: false
+attributes:
+  statuslabel:
+    schema:
+      type: object
+      properties:
+        value:
+          title: StatusStateLab
+          type: string
+      additionalProperties: false
+      required:
+        - value
+    enumCommands: []
+commands: {}
