@@ -11,10 +11,12 @@ Additional requirements:
 * List of **SmartThings device IDs** (UUID format) of the devices you want to monitor (see below for more info)
 
 ### Finding the SmartThings device ID
+A device ID is a 36-character hexidecimal string in the standard UUID format:  xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 
 Device IDs can be obtained in a few ways:
 * Option 1: Use [my.smartthings.com](https://my.smartthings.com)
   * Select a device and in the popup window on the left side (you may have to scroll to bottom) the device ID will be found in the white box.
+
 * Option 2: Use a web browser, curl or Postman
   * Depending on what you use, the request may require a way to include an authorization header with your SmartThings Token
   * A browser can be the easiest, but it is **highly** recommended to have a JSON formatter browser extension for easier reading of the response data.
@@ -23,12 +25,11 @@ Device IDs can be obtained in a few ways:
     https://api.smartthings.com/v1/devices
     ```
     If you get a 401 error, you need to get signed in to your SmartThings account on another tab.
+    
 * Option 3: Use SmartThings CLI:
   ```
   smartthings devices
   ```
-  
-A device ID is a 36-character hexidecimal string in the standard UUID format:  xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
   
 *Note that the Device IDs required for this driver are **not** available from the IDE (soon to be sunset)*
 
