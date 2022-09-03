@@ -13,7 +13,7 @@ Additional requirements:
 ### Finding the SmartThings device ID
 
 Device IDs can be obtained in a few ways:
-* Option 1: Use my.smartthings.com
+* Option 1: Use [my.smartthings.com](https://my.smartthings.com)
   * Select a device and in the popup window on the left side (you may have to scroll to bottom) the device ID will be found in the white box.
 * Option 2: Use a web browser, curl or Postman
   * Depending on what you use, the request may require a way to include an authorization header with your SmartThings Token
